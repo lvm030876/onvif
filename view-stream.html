@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JSMpeg Stream Client</title>
+	<style type="text/css">
+		html, body {
+			background-color: #111;
+			text-align: center;
+		}
+	</style>
+	
+</head>
+<body>
+	<div style="position: absolute; left: 20%;color: red; font-size: 100px;" id="coordinates"></div>
+	<canvas id="video-canvas-1"></canvas>
+	<canvas id="video-canvas-2"></canvas>
+	<script type="text/javascript" src="jsmpeg.min.js"></script>
+	<script type="text/javascript">
+		var canvas1 = document.getElementById('video-canvas-1');
+		var canvas2 = document.getElementById('video-canvas-2');
+		var osd = document.getElementById('coordinates');
+		var i = 1;
+		var player = new JSMpeg.Player('ws://127.0.0.1:9998/', {canvas: canvas1});
+		var player = new JSMpeg.Player('ws://127.0.0.1:9999/', {canvas: canvas2});
+		setInterval(()=>{
+			(i > 10)?i=1:i++;
+			osd.innerHTML = 'здесь был вася! ' + i;
+		}, 1000)
+	</script>
+</body>
+</html>
